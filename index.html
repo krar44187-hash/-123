@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>نتائج الطلاب</title>
+
+<style>
+
+body{
+font-family:Tahoma;
+direction:rtl;
+background:#f0f2f5;
+text-align:center;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.logo{
+width:120px;
+margin-bottom:10px;
+}
+
+h1{
+margin:5px;
+color:#003c8f;
+}
+
+.search{
+margin-top:20px;
+}
+
+.search input{
+padding:10px;
+width:60%;
+font-size:18px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.search button{
+padding:10px 20px;
+font-size:18px;
+background:#003c8f;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.info{
+margin-top:20px;
+font-size:18px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:8px;
+font-size:16px;
+}
+
+th{
+background:#003c8f;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f2f2f2;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo">
+
+<h1>وزارة التربية</h1>
+<h1>مديرية تربية محافظة بابل</h1>
+<h1>اعدادية الشهيد عادل ناصر</h1>
+
+<div class="search">
+<input id="name" placeholder="اكتب اسم الطالب">
+<button onclick="search()">بحث</button>
+</div>
+
+<div id="studentInfo" class="info"></div>
+
+<table id="table" style="display:none">
+
+<tr>
+<th>المواد</th>
+<th>معدل النصف الاول</th>
+<th>نصف السنة</th>
+<th>معدل النصف الثاني</th>
+<th>السعي السنوي</th>
+<th>الدرجة النهائية</th>
+<th>درجة الاكمال</th>
+</tr>
+
+<tr><td>اسلامية</td><td>80</td><td>75</td><td>85</td><td>80</td><td>82</td><td>-</td></tr>
+<tr><td>عربي</td><td>70</td><td>72</td><td>78</td><td>73</td><td>75</td><td>-</td></tr>
+<tr><td>انكليزي</td><td>65</td><td>60</td><td>70</td><td>63</td><td>66</td><td>-</td></tr>
+<tr><td>رياضيات</td><td>90</td><td>88</td><td>92</td><td>89</td><td>91</td><td>-</td></tr>
+<tr><td>كيمياء</td><td>75</td><td>70</td><td>78</td><td>74</td><td>76</td><td>-</td></tr>
+<tr><td>فيزياء</td><td>68</td><td>65</td><td>72</td><td>67</td><td>70</td><td>-</td></tr>
+<tr><td>احياء</td><td>85</td><td>80</td><td>88</td><td>83</td><td>86</td><td>-</td></tr>
+<tr><td>حاسوب</td><td>95</td><td>93</td><td>96</td><td>94</td><td>95</td><td>-</td></tr>
+
+</table>
+
+</div>
+
+<script>
+
+let students={
+"علي احمد كريم":{
+class:"الخامس العلمي",
+section:"أ"
+}
+}
+
+function search(){
+
+let name=document.getElementById("name").value
+let student=students[name]
+
+if(student){
+
+document.getElementById("studentInfo").innerHTML=
+"الاسم: "+name+
+"<br>الصف: "+student.class+
+"<br>الشعبة: "+student.section
+
+document.getElementById("table").style.display="table"
+
+}else{
+
+document.getElementById("studentInfo").innerHTML="الطالب غير موجود"
+document.getElementById("table").style.display="none"
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
